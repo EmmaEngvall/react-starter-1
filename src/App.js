@@ -1,7 +1,10 @@
 /*eslint-disable*/
 import React, { useState, useEffect } from 'react'; 
+
 import { TaskList } from 'components/TaskList';
 import { TaskForm } from 'components/TaskForm';
+
+export const App = () => {
 
 const [taskList, setTaskList] = useState([]);
 const [loading, setLoading] = useState(false);
@@ -12,7 +15,7 @@ useEffect(() => {
   }, []); 
 
 const fetchTasks = () => {
-  setloading(true);
+  setLoading(true);
   fetch('https://week-7-backend.onrender.com/tasks')
     .then(res => res.json())
     .then(data => setTaskList(data))
@@ -44,12 +47,18 @@ const onFormSubmit = (event) => {
     .finally(() => setNewTodo(''));
 }
 
-
-const App = () => {
-  return (
+return (
     <div>
-      Example project for week 7 🌠
-      <TaskList />
+      <TaskForm
+        newTodo={newTodo}
+        onNewTodoChange={handleNewTodoChange}
+        onFormSubmit={onFormSubmit}
+      />
+      <TaskList
+        loading={loading}
+        taskList={taskList}
+        setTaskList={setTaskList}
+      />
     </div>
   )
 }

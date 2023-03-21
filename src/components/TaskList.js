@@ -1,5 +1,6 @@
+/*eslint-disable*/
 import React from "react";
-import { formatRealtive } from "date-fns";
+import { formatRelative } from "date-fns";
 
 export const TaskList = ({ loading, taskList, setTaskList }) => {
     
@@ -26,5 +27,3 @@ export const TaskList = ({ loading, taskList, setTaskList }) => {
         </section>
     );
 }
-
-//return <div>Task list</div>
